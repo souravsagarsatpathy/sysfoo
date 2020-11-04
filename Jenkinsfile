@@ -37,12 +37,6 @@ pipeline {
       }
     }
 
-    stage('Archive') {
-      steps {
-        archiveArtifacts 'target/*.war'
-      }
-    }
-
     stage('Dockerbnp') {
       steps {
         script {
