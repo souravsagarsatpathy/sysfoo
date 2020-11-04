@@ -42,7 +42,7 @@ pipeline {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
 
-            def dockerImage = docker.build("satpathy/sysfoo:v${env.BUILD_ID}", "./")
+            def dockerImage = docker.build("sssatpathy/sysfoo:v${env.BUILD_ID}", "./")
 
             dockerImage.push()
 
