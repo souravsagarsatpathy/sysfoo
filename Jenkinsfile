@@ -43,6 +43,23 @@ pipeline {
       }
     }
 
+    stage('Dockerbnp') {
+      steps {
+        script {
+          docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
+
+            def dockerImage = docker.build("satpathy/sysfoo:v${env.BUILD_ID}", "./")
+
+            dockerImage.push()
+
+            dockerImage.push("latest")
+
+          }
+        }
+
+      }
+    }
+
   }
   tools {
     maven 'Maven 3.6.3'
